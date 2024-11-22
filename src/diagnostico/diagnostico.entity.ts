@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 
-import { PacienteEntity } from "src/paciente/paciente.entity";
+import { PacienteEntity } from "../paciente/paciente.entity";
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('diagnostico')
