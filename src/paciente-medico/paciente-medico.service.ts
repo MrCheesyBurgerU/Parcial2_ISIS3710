@@ -27,7 +27,7 @@ export class PacienteMedicoService {
             );
         }
 
-        const paciente: PacienteEntity = await this.pacienteRepository.findOne({where: {id: idPaciente}})
+        const paciente: PacienteEntity = await this.pacienteRepository.findOne({where: {id: idPaciente}, relations: ["medicos"]})
         if(!paciente){
             throw new BusinessLogicException(
                 "The pacient with the given id was not found",
