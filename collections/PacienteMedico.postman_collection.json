@@ -1,0 +1,388 @@
+{
+	"info": {
+		"_postman_id": "65a00061-3647-4fc8-8285-573ed1807093",
+		"name": "PacienteMedico",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29069542"
+	},
+	"item": [
+		{
+			"name": "Añadir un paciente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"pacient_id_2\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Maria Camila Hoyos\",\r\n    \"genero\": \"femenino\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/pacientes",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pacientes"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Añadir un paciente",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Juan Andrés Ariza\",\r\n    \"genero\": \"masculino\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/pacientes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pacientes"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"nombre\": \"Maria Camila Hoyos\",\r\n    \"genero\": \"femenino\",\r\n    \"id\": \"629e64e5-29b9-4a5f-87ab-567b546e0db3\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Añadir un médico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"doctor_id_2\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Daniel Angel\",\r\n    \"especialidad\": \"Medicina General\",\r\n    \"telefono\": \"3001122121\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/medicos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"medicos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Añadir un médico",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Nicolas Rozo Fajardo\",\r\n    \"especialidad\": \"Optometría\",\r\n    \"telefono\": \"3002211212\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/medicos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"medicos"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"nombre\": \"Daniel Angel\",\r\n    \"especialidad\": \"Medicina General\",\r\n    \"telefono\": \"3001122121\",\r\n    \"id\": \"e389fe98-f4e6-433b-804d-0fe516c04f31\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Añadir un médico a un paciente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/pacientes/{{pacient_id_2}}/medicos/{{doctor_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pacientes",
+						"{{pacient_id_2}}",
+						"medicos",
+						"{{doctor_id_2}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Añadir un médico a un paciente",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/pacientes/{{pacient_id_2}}/medicos/{{doctor_id_2}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pacientes",
+								"{{pacient_id_2}}",
+								"medicos",
+								"{{doctor_id_2}}"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"9bc15ca3-4151-458e-aa8f-0c1f027be5f3\",\n    \"nombre\": \"Maria Camila Hoyos\",\n    \"genero\": \"femenino\",\n    \"medicos\": [\n        {\n            \"id\": \"2276e477-093d-4cb3-8712-5d1e79dd0b6f\",\n            \"nombre\": \"Daniel Angel\",\n            \"especialidad\": \"Medicina General\",\n            \"telefono\": \"3001122121\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Añadir un médico que no existe a un paciente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The doctor with the given id was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/pacientes/{{pacient_id_2}}/medicos/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pacientes",
+						"{{pacient_id_2}}",
+						"medicos",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Añadir un médico que no existe a un paciente",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/pacientes/{{pacient_id_2}}/medicos/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pacientes",
+								"{{pacient_id_2}}",
+								"medicos",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"statusCode\": 404,\r\n    \"message\": \"The doctor with the given id was not found\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Añadir un médico a un paciente que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The pacient with the given id was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/pacientes/00000000-0000-0000-0000-000000000000/medicos/{{doctor_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pacientes",
+						"00000000-0000-0000-0000-000000000000",
+						"medicos",
+						"{{doctor_id_2}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Añadir un médico a un paciente que no existe",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/pacientes/00000000-0000-0000-0000-000000000000/medicos/{{doctor_id_2}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pacientes",
+								"00000000-0000-0000-0000-000000000000",
+								"medicos",
+								"{{doctor_id_2}}"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The pacient with the given id was not found\"\n}"
+				}
+			]
+		}
+	]
+}

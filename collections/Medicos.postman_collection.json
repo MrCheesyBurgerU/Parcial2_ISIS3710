@@ -1,0 +1,418 @@
+{
+	"info": {
+		"_postman_id": "0ccf745f-4074-4c1e-a593-9a6babf35362",
+		"name": "Medicos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29069542"
+	},
+	"item": [
+		{
+			"name": "Añadir un médico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"doctor_id_1\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Nicolas Rozo Fajardo\",\r\n    \"especialidad\": \"Optometría\",\r\n    \"telefono\": \"3002211212\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/medicos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"medicos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Añadir un médico",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Nicolas Rozo Fajardo\",\r\n    \"especialidad\": \"Optometría\",\r\n    \"telefono\": \"3002211212\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/medicos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"medicos"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"nombre\": \"Nicolas Rozo Fajardo\",\r\n    \"especialidad\": \"Optometría\",\r\n    \"telefono\": \"3002211212\",\r\n    \"id\": \"17ab7d16-e465-4911-ae9e-aff04db093da\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener todos los médicos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of doctors > ' + 0, function () {\r",
+							"   var data = pm.response.json()\r",
+							"   pm.expect(data.length).to.greaterThan(0)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/medicos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"medicos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener todos los médicos",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/medicos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"medicos"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\r\n    {\r\n        \"id\": \"17ab7d16-e465-4911-ae9e-aff04db093da\",\r\n        \"nombre\": \"Nicolas Rozo Fajardo\",\r\n        \"especialidad\": \"Optometría\",\r\n        \"telefono\": \"3002211212\",\r\n        \"pacientes\": []\r\n    }\r\n]"
+				}
+			]
+		},
+		{
+			"name": "Obtener un médico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/medicos/{{doctor_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"medicos",
+						"{{doctor_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener un médico",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/medicos/{{doctor_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"medicos",
+								"{{doctor_id}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"17ab7d16-e465-4911-ae9e-aff04db093da\",\n    \"nombre\": \"Nicolas Rozo Fajardo\",\n    \"especialidad\": \"Optometría\",\n    \"telefono\": \"3002211212\",\n    \"pacientes\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener un médico que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The doctor with the given id was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/medicos/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"medicos",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener un médico que no existe",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/medicos/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"medicos",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The doctor with the given id was not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Borrar un médico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/medicos/{{doctor_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"medicos",
+						"{{doctor_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Borrar un médico",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/medicos/{{doctor_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"medicos",
+								"{{doctor_id}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Borrar un médico que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"The doctor with the given id was not found\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/medicos/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"medicos",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Borrar un médico que no existe",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/medicos/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"medicos",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"statusCode\": 404,\r\n    \"message\": \"The doctor with the given id was not found\"\r\n}"
+				}
+			]
+		}
+	]
+}
